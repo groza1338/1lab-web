@@ -282,7 +282,7 @@ svg {
 }
 
 .intro-h1 {
-    font-size: 7.2rem;
+    font-size: clamp(3.2rem, 6vw, 7.2rem);
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 4rem;
@@ -290,7 +290,7 @@ svg {
 }
 
 .intro-p {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 1.5vw, 1.8rem);
     opacity: 0.8;
     line-height: 1.6;
 }
@@ -410,7 +410,7 @@ svg {
 }
 
 .product h1 {
-    font-size: 5.2rem;
+    font-size: clamp(2.8rem, 4vw, 5.2rem);
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 4rem;
@@ -427,7 +427,7 @@ svg {
 
 
 .product-p-div {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 1.5vw, 1.8rem);
     opacity: 0.8;
     line-height: 1.6;
 }
