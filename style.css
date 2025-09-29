@@ -481,3 +481,17 @@ svg {
     font-family: arial;
     transform: scaleX(-1) rotate(-35deg);
 }
+
+@media (max-width: 960px){
+    .intro { flex-direction: column; gap: 4rem; }
+    .intro-img { justify-content: center; }
+    .product { flex-direction: column; gap: 3rem; }
+    .product-img, .product-img-2 { margin: 0; }
+    .section-class { padding: 0 1.6rem; }
+    .new-container > :not(:first-child){ margin-top: 8rem; }
+}
+@media (max-width: 640px){
+    header { height: 64px; }
+    .nav-list { display:none; }
+    .sign-up { padding: .75rem 1.2rem; }
+}
