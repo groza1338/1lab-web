@@ -166,10 +166,11 @@ button {
     font-weight: bold;
     border-radius: 0.4rem;
     border: 2px solid rgb(var(--primary));
-    transition: transform 0.3s;
     backface-visibility: hidden;
     will-change: transform;
     cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease;
+    box-shadow: var(--shadow-md);
 }
 
 .theme {
@@ -310,6 +311,21 @@ svg {
 
 .custom-button span {
     margin-left: 2rem;
+}
+
+.custom-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.custom-button:focus-visible {
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 3px;
+}
+
+.custom-button-not-bg:hover {
+    opacity: .8;
+    transform: translateY(-1px);
 }
 
 .custom-button-not-bg {
