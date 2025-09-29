@@ -124,7 +124,8 @@ li a {
 
 nav {
     display: flex;
-    list-style: none;
+    align-items: center;
+    gap: 1rem;
 }
 
 nav li {
@@ -204,6 +205,14 @@ button {
 svg {
     color: rgb(var(--text));
 }
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 
 .nav-li {
     background-color: transparent;
