@@ -37,19 +37,19 @@ html {
 }
 
 .next-dark-theme {
-    --background: 10, 18, 30;
-    --secondBackground: 14, 22, 36;
-    --text: 245, 247, 250;
-    --textSecondary: 10, 18, 30;
+    --background: 26, 32, 44;
+    --secondBackground: 45, 55, 72;
+    --text: 237, 237, 238;
+    --textSecondary: 255, 255, 255;
     --primary: 22, 115, 255;
-    --secondary: 245, 247, 250;
-    --tertiary: 22, 28, 40;
-    --cardBackground: 18, 26, 40;
-    --inputBackground: 18, 26, 40;
-    --navbarBackground: 14, 22, 36;
-    --modalBackground: 10, 18, 30;
-    --errorColor: 255, 99, 99;
-    --logoColor: #E6EEF9;
+    --secondary: 10, 18, 30;
+    --tertiary: 231, 241, 251;
+    --cardBackground: 45, 55, 72;
+    --inputBackground: 45, 55, 72;
+    --navbarBackground: 45, 55, 72;
+    --modalBackground: 26, 32, 44;
+    --errorColor: 207, 34, 46;
+    --logoColor: #fff;
 }
 
 body {
