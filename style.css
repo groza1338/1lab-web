@@ -270,7 +270,7 @@ svg {
 }
 
 .sign-span::before {
-        position: relative;
+    position: relative;
     bottom: -0.1em;
     content: "";
     display: inline-block;
@@ -414,7 +414,7 @@ svg {
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 4rem;
-    letter-spacing: -0.03em;    
+    letter-spacing: -0.03em;
 }
 
 .product span {
@@ -465,15 +465,3 @@ svg {
     font-family: arial;
     transform: scaleX(-1) rotate(-35deg);
 }
-
-
-
-
-
-
-
-
-
-
-
-
