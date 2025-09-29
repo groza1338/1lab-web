@@ -484,6 +484,56 @@ svg {
     transform: scaleX(-1) rotate(-35deg);
 }
 
+.partners-header {
+    font-size: 1.3rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.partners-marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 0.8rem 0;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: clamp(3rem, 6vw, 8rem);
+    width: max-content;
+    will-change: transform;
+    animation: partners-marquee 45s linear infinite;
+}
+
+.marquee-track li {
+    list-style: none;
+    flex: 0 0 auto;
+}
+
+.partners-logo {
+    height: clamp(24px, 3.2vw, 40px);
+    width: auto;
+    opacity: .75;
+    transition: opacity .2s ease;
+}
+
+.partners-logo:hover {
+    opacity: 1;
+}
+
+@keyframes partners-marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
 @media (max-width: 960px){
     .intro { flex-direction: column; gap: 4rem; }
     .intro-img { justify-content: center; }
