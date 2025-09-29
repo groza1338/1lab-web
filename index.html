@@ -352,4 +352,31 @@
       </footer>
     </div>
   </body>
+  <script>
+    (function() {
+      const root = document.body;
+      const btn = document.getElementById('theme-toggle');
+      const STORAGE_KEY = 'next-theme';
+
+      function applyTheme(theme){
+        root.classList.remove('next-light-theme','next-dark-theme');
+        root.classList.add(theme);
+        localStorage.setItem(STORAGE_KEY, theme);
+      }
+
+      // стартовое состояние — из localStorage или из prefers-color-scheme
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        applyTheme(saved);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'next-dark-theme' : 'next-light-theme');
+      }
+
+      btn?.addEventListener('click', () => {
+        const isDark = root.classList.contains('next-dark-theme');
+        applyTheme(isDark ? 'next-light-theme' : 'next-dark-theme');
+      });
+    })();
+  </script>
 </html>
