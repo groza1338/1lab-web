@@ -698,6 +698,103 @@ svg {
     color: rgb(var(--text), .75);
 }
 
+.testimonials{
+    padding: clamp(8rem, 14vw, 18rem) 0;
+    background: rgb(var(--secondBackground));
+}
+.testimonials *{ box-sizing: border-box; }
+
+.testi-inner{
+    max-width: 120rem;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.testi-viewport{
+    overflow: hidden;
+    width: 100%;
+}
+
+.testi-track{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    will-change: transform;
+    transition: transform .45s cubic-bezier(.22,.61,.36,1);
+}
+
+.testi-slide{
+    flex: 0 0 100%;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testi-logo{
+    display: block;
+    height: clamp(24px, 3.2vw, 40px);
+    width: auto;
+    margin: 0 auto 2.4rem;
+    opacity: .9;
+}
+
+.testi-quote{
+    margin: 0 auto;
+    max-width: 92rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    font-size: clamp(2.2rem, 3.4vw, 4rem);
+    color: rgb(var(--text));
+}
+
+.testi-author{
+    margin-top: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+}
+.testi-avatar{
+    width: clamp(40px, 5vw, 56px);
+    height: clamp(40px, 5vw, 56px);
+    border-radius: 9999px;
+    object-fit: cover;
+}
+.testi-meta{ text-align: left; }
+.testi-name{ font-weight: 800; font-size: 1.5rem; line-height: 1.2; color: rgb(var(--text)); }
+.testi-role{ font-size: 1.3rem; line-height: 1.4; color: rgb(var(--text), .65); }
+
+.testi-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 9999px;
+    border: 1px solid rgb(15 23 42 / 10%);
+    background: rgb(var(--cardBackground));
+    color: rgb(var(--text));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.testi-nav.prev{ left: 0; }
+.testi-nav.next{ right: 0; }
+.testi-nav:focus-visible{
+    outline: 2px solid rgb(var(--primary));
+    outline-offset: 3px;
+}
+
+@media (min-width: 1280px){
+    .testi-nav.prev{ left: -4rem; }
+    .testi-nav.next{ right: -4rem; }
+}
+
 @media (max-width: 1100px){
     .gallery-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

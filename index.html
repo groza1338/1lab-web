@@ -364,21 +364,68 @@
           </section>
 
 
-          <section class="clients">
-            <div class="swap-zone">
-              <div class="clients-div">
-                <img src="images/switch-theme-light.png" alt="switch theme" />
-                <blockquote></blockquote>
-                <div class="author">
-                  <img src="images/switch-theme-light.png" alt="switch theme" />
-                  <div class="author-info">
-                    <p class="name"></p>
-                    <p class="role"></p>
-                  </div>
-                </div>
+          <section class="testimonials" aria-label="Testimonials" tabindex="0">
+            <div class="testi-inner">
+              <button class="testi-nav prev" aria-label="Previous testimonial" type="button">
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+              </button>
+
+              <div class="testi-viewport" aria-roledescription="carousel">
+                <ul class="testi-track" role="list">
+                  <li class="testi-slide" role="group" aria-label="1 of 3" aria-hidden="false">
+                    <img class="testi-logo" src="images/company-logo-1.svg" alt="Company 1 logo">
+                    <blockquote class="testi-quote">
+                      «Really good. I am so pleased with this product. I didn't even need training.»
+                    </blockquote>
+                    <div class="testi-author">
+                      <img class="testi-avatar" src="images/author-photo-1.webp" alt="Clyde Edwards photo" loading="lazy">
+                      <div class="testi-meta">
+                        <div class="testi-name">Clyde Edwards</div>
+                        <div class="testi-role">Head of Product, Company 1</div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="testi-slide" role="group" aria-label="2 of 4" aria-hidden="true">
+                    <img class="testi-logo" src="images/company-logo-2.svg" alt="Company 2 logo">
+                    <blockquote class="testi-quote">
+                      «It's really wonderful. I use saas product often. Thank You! Saas product has really helped our business.»
+                    </blockquote>
+                    <div class="testi-author">
+                      <img class="testi-avatar" src="images/author-photo-2.webp" alt="Amelia Stone photo" loading="lazy">
+                      <div class="testi-meta">
+                        <div class="testi-name">Amelia Stone</div>
+                        <div class="testi-role">CMO, Company 2</div>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="testi-slide" role="group" aria-label="3 of 4" aria-hidden="true">
+                    <img class="testi-logo" src="images/company-logo-3.svg" alt="Company 3 logo">
+                    <blockquote class="testi-quote">
+                      «Since I invested in saas product I made over 100,000 dollars profits. It really saves me time and effort. saas product is exactly what our business has been lacking.»
+                    </blockquote>
+                    <div class="testi-author">
+                      <img class="testi-avatar" src="images/author-photo-3.webp" alt="Noah Patel photo" loading="lazy">
+                      <div class="testi-meta">
+                        <div class="testi-name">Noah Patel</div>
+                        <div class="testi-role">VP Operations, Company 3</div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
+
+              <button class="testi-nav next" aria-label="Next testimonial" type="button">
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M8.59 7.41 13.17 12 8.59 16.59 10 18l6-6-6-6-1.41 1.41z"/>
+                </svg>
+              </button>
             </div>
           </section>
+
 
           <section class="carousel-scetion">
             <div class="carousel-header">
@@ -527,4 +574,36 @@
       openItem(document.querySelector('.feature-item') || items[0]);
     })();
   </script>
+  <script>
+    (function(){
+      const root   = document.querySelector('.testimonials');
+      if(!root) return;
+
+      const viewport = root.querySelector('.testi-viewport');
+      const track    = root.querySelector('.testi-track');
+      const slides   = Array.from(root.querySelectorAll('.testi-slide'));
+      const prevBtn  = root.querySelector('.testi-nav.prev');
+      const nextBtn  = root.querySelector('.testi-nav.next');
+
+      let index = 0;
+
+      function update(){
+        const offset = -index * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        slides.forEach((el, i) => {
+          el.setAttribute('aria-hidden', i === index ? 'false' : 'true');
+          el.setAttribute('aria-label', `${i+1} of ${slides.length}`);
+        });
+      }
+
+      function prev(){ index = (index - 1 + slides.length) % slides.length; update(); }
+      function next(){ index = (index + 1) % slides.length; update(); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      update();
+    })();
+  </script>
+
 </html>
