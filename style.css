@@ -917,7 +917,7 @@ svg {
     font-weight:700;
     line-height:1.1;
     letter-spacing:-0.015em;
-    font-size:clamp(2.6rem, 3.4vw + 2rem, 6.2rem); 
+    font-size:clamp(2.6rem, 3.4vw + 2rem, 6.2rem);
     color:#F2F5F8;
     margin:0 auto 3.6rem;
 }
@@ -961,6 +961,57 @@ svg {
 .final-cta-btn span{
     display:inline-block;
     transform:translateY(-1px);
+}
+
+.footer {
+    background: rgb(12, 20, 32);
+    color: rgba(255,255,255,.8);
+}
+
+.footer-wrap { padding: 9rem 2rem 3.6rem; }
+
+.footer-grid {
+    display: grid;
+    gap: 6rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    max-width: 105rem;
+    margin: 0 auto;
+}
+
+.f-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 2.4rem;
+}
+
+.f-list { list-style: none; margin: 0; padding: 0; }
+.f-item {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: rgba(255,255,255,.8);
+    padding: .4rem 0;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 6rem;
+    max-width: 105rem;
+    margin: 0 auto;
+}
+
+.f-copy {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,.75);
+}
+
+.f-social { display: flex; gap: 1.6rem; }
+
+@media (min-width: 1024px) {
+    .footer-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 
