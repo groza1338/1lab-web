@@ -427,19 +427,86 @@
           </section>
 
 
-          <section class="carousel-scetion">
-            <div class="carousel-header">
-              <span>features</span>
-              <div>What are you signing in for?</div>
+          <section class="cards-carousel" aria-label="Cards Carousel">
+            <div class="cards-carousel-header section-class">
+              <span class="cc-kicker">features</span>
+              <h2 class="cc-title">What are you signing in for?</h2>
             </div>
-            <div class="carousel">
-              <a class="card">
-                <div class="card-container">
-                  <img src="images/switch-theme-light.png" alt="switch theme" />
-                  <h4></h4>
-                  <p></p>
-                </div>
-              </a>
+
+            <div class="cc-scroller" id="cc-scroller">
+              <div class="cc-track">
+                <article class="cc-card">
+                  <div class="cc-media">
+                    <img src="images/example-image.webp" alt="" draggable="false">
+                  </div>
+                  <div class="cc-content">
+                    <h4 class="cc-card-title">Lorem ipsum dolor sit amet.</h4>
+                    <p class="cc-card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?
+                    </p>
+                  </div>
+                </article>
+
+                <article class="cc-card">
+                  <div class="cc-media">
+                    <img src="images/example-image.webp" alt="" draggable="false">
+                  </div>
+                  <div class="cc-content">
+                    <h4 class="cc-card-title">Lorem ipsum dolor sit amet.</h4>
+                    <p class="cc-card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?
+                    </p>
+                  </div>
+                </article>
+
+                <article class="cc-card">
+                  <div class="cc-media">
+                    <img src="images/example-image.webp" alt="" draggable="false">
+                  </div>
+                  <div class="cc-content">
+                    <h4 class="cc-card-title">Lorem ipsum dolor sit amet.</h4>
+                    <p class="cc-card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?
+                    </p>
+                  </div>
+                </article>
+
+                <article class="cc-card">
+                  <div class="cc-media">
+                    <img src="images/example-image.webp" alt="" draggable="false">
+                  </div>
+                  <div class="cc-content">
+                    <h4 class="cc-card-title">Lorem ipsum dolor sit amet.</h4>
+                    <p class="cc-card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?
+                    </p>
+                  </div>
+                </article>
+
+                <article class="cc-card">
+                  <div class="cc-media">
+                    <img src="images/example-image.webp" alt="" draggable="false">
+                  </div>
+                  <div class="cc-content">
+                    <h4 class="cc-card-title">Lorem ipsum dolor sit amet.</h4>
+                    <p class="cc-card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?
+                    </p>
+                  </div>
+                </article>
+
+                <article class="cc-card">
+                  <div class="cc-media">
+                    <img src="images/example-image.webp" alt="" draggable="false">
+                  </div>
+                  <div class="cc-content">
+                    <h4 class="cc-card-title">Lorem ipsum dolor sit amet.</h4>
+                    <p class="cc-card-text">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis error dolorem ipsa dolore facere est consequuntur aut, eos doloribus voluptate?
+                    </p>
+                  </div>
+                </article>
+              </div>
             </div>
           </section>
 
@@ -621,5 +688,70 @@
       update();
     })();
   </script>
+  <script>
+    (function(){
+      const scroller = document.getElementById('cc-scroller');
+      if(!scroller) return;
+
+      let dragging = false;
+      let startX = 0;
+      let startLeft = 0;
+
+      function snapToNearest(){
+        const cards = scroller.querySelectorAll('.cc-card');
+        if(!cards.length) return;
+
+        const scrollerRect = scroller.getBoundingClientRect();
+        const scrollerCenter = scrollerRect.left + scrollerRect.width / 2;
+
+        let best = null;
+        let bestDist = Infinity;
+
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const dist = Math.abs(cardCenter - scrollerCenter);
+          if(dist < bestDist){
+            bestDist = dist;
+            best = card;
+          }
+        });
+
+        if(best){
+          const rect = best.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const delta = cardCenter - scrollerCenter;
+          scroller.scrollTo({ left: scroller.scrollLeft + delta, behavior: 'smooth' });
+        }
+      }
+
+      scroller.addEventListener('pointerdown', (e) => {
+        dragging = true;
+        scroller.classList.add('dragging');
+        scroller.setPointerCapture(e.pointerId);
+        startX = e.clientX;
+        startLeft = scroller.scrollLeft;
+      });
+
+      scroller.addEventListener('pointermove', (e) => {
+        if(!dragging) return;
+        e.preventDefault();
+        const dx = e.clientX - startX;
+        scroller.scrollLeft = startLeft - dx;
+      }, { passive: false });
+
+      function end(e){
+        if(!dragging) return;
+        dragging = false;
+        scroller.classList.remove('dragging');
+        try { scroller.releasePointerCapture(e.pointerId); } catch(_) {}
+        snapToNearest();
+      }
+      scroller.addEventListener('pointerup', end);
+      scroller.addEventListener('pointerleave', end);
+      scroller.addEventListener('pointercancel', end);
+    })();
+  </script>
+
 
 </html>
