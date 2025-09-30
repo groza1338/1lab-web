@@ -881,6 +881,88 @@ svg {
 
 .cc-scroller.dragging{ scroll-snap-type: none; }
 
+.final-cta{
+    position:relative;
+    background:#0B1420;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:clamp(10rem, 16vh, 20rem) 2rem clamp(12rem, 18vh, 24rem);
+    overflow:hidden;
+    isolation:isolate;
+}
+
+.final-cta-wave{
+    position:absolute;
+    top:-1px;
+    left:0;
+    width:100%;
+    height:min(28vw, 220px);
+    color:rgb(var(--background));
+    pointer-events:none;
+    z-index:0;
+}
+.final-cta-wave path{ fill:currentColor; }
+
+.final-cta-inner{
+    width:100%;
+    max-width:120rem;
+    text-align:center;
+    z-index:1;
+}
+
+.final-cta-title{
+    font-weight:700;
+    line-height:1.1;
+    letter-spacing:-0.015em;
+    font-size:clamp(2.6rem, 3.4vw + 2rem, 6.2rem); 
+    color:#F2F5F8;
+    margin:0 auto 3.6rem;
+}
+
+.final-cta-actions{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:1.6rem;
+    flex-wrap:wrap;
+}
+
+.final-cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:1rem;
+    text-transform:uppercase;
+    font-weight:700;
+    letter-spacing:0.06em;
+    font-size:1.3rem;
+    padding:1.6rem 2.4rem;
+    border-radius:0.8rem;
+    border:2px solid transparent;
+    text-decoration:none;
+    box-shadow:var(--shadow-md);
+    /* без hover — как просил */
+}
+
+.final-cta-primary{
+    background:rgb(var(--primary));
+    border-color:rgb(var(--primary));
+    color:#fff;
+}
+
+.final-cta-outline{
+    background:transparent;
+    color:#fff;
+    border-color:rgba(255,255,255,0.18);
+}
+
+.final-cta-btn span{
+    display:inline-block;
+    transform:translateY(-1px);
+}
+
 
 @media (min-width: 1280px){
     .testi-nav.prev{ left: -4rem; }
