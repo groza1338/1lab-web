@@ -236,28 +236,72 @@
             </div>
           </section>
 
-          <section class="features">
+          <section class="features section-class" id="features">
             <div class="features-header">
-              <span>features</span>
-              <div class="feature-header">What are you signing in for?</div>
+              <span class="features-kicker">FEATURES</span>
+              <h2 class="features-title">What are you signing in for?</h2>
             </div>
-            <div class="feature-tabs">
-              <div class="feature-tabs-tabs">
-                <div class="feature-tab">
-                  <div class="feature-tab-header">
-                    <div class="feature-tab-header-circle"></div>
-                    <h4>Find relevant media contacts - multiline title</h4>
+
+            <div class="features-wrap">
+              <div class="feature-list" role="presentation">
+                <button
+                        class="feature-item accent-red is-open"
+                        aria-expanded="true"
+                        aria-controls="feat-panel-1"
+                        id="feat-btn-1"
+                        data-image="images/feature-1.webp">
+                  <span class="feature-bullet"><span></span></span>
+                  <div class="feature-copy">
+                    <h4>Find relevant media contacts – multiline title</h4>
+                    <div class="feature-body" role="region" id="feat-panel-1" aria-labelledby="feat-btn-1">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem
+                        ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.
+                      </p>
+                    </div>
                   </div>
-                  <div class="feature-tab-info">
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quibusdam quidem ipsam ratione dicta quis cupiditate
-                      consequuntur laborum ducimus iusto velit.
-                    </p>
+                </button>
+
+                <button
+                        class="feature-item accent-blue"
+                        aria-expanded="false"
+                        aria-controls="feat-panel-2"
+                        id="feat-btn-2"
+                        data-image="images/feature-2.webp">
+                  <span class="feature-bullet"><span></span></span>
+                  <div class="feature-copy">
+                    <h4>Another amazing feature</h4>
+                    <div class="feature-body" role="region" id="feat-panel-2" aria-labelledby="feat-btn-2">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem
+                        ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </button>
+
+                <button
+                        class="feature-item accent-green"
+                        aria-expanded="false"
+                        aria-controls="feat-panel-3"
+                        id="feat-btn-3"
+                        data-image="images/feature-3.webp">
+                  <span class="feature-bullet"><span></span></span>
+                  <div class="feature-copy">
+                    <h4>And yet… another truly fascinating feature</h4>
+                    <div class="feature-body" role="region" id="feat-panel-3" aria-labelledby="feat-btn-3">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem
+                        ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.
+                      </p>
+                    </div>
+                  </div>
+                </button>
               </div>
-              <img src="images/switch-theme-light.png" alt="switch theme" />
+
+              <div class="feature-visual">
+                <img id="feature-visual" src="images/feature-1.webp" alt="Find relevant media contacts – multiline title">
+              </div>
             </div>
           </section>
 
@@ -375,6 +419,63 @@
         const isDark = root.classList.contains('next-dark-theme');
         applyTheme(isDark ? 'next-light-theme' : 'next-dark-theme');
       });
+    })();
+  </script>
+  <script>
+    (function () {
+      const items  = document.querySelectorAll('.feature-item');
+      const visual = document.getElementById('feature-visual');
+
+      function setBodyHeight(el, open){
+        if(!el) return;
+        if(open){
+          el.style.height = 'auto';
+          const h = el.scrollHeight + 'px';
+          el.style.height = '0px';
+          requestAnimationFrame(()=>{ el.style.height = h; });
+          el.addEventListener('transitionend', function te(e){
+            if(e.propertyName === 'height'){
+              el.style.height = 'auto';
+              el.removeEventListener('transitionend', te);
+            }
+          });
+        } else {
+          const current = el.offsetHeight;
+          el.style.height = current + 'px';
+          requestAnimationFrame(()=>{ el.style.height = '0px'; });
+        }
+      }
+
+      function openItem(btn){
+        items.forEach(it => {
+          const body = it.querySelector('.feature-body');
+          if(it === btn){
+            it.classList.add('is-open');
+            it.setAttribute('aria-expanded','true');
+            setBodyHeight(body, true);
+          } else {
+            it.classList.remove('is-open');
+            it.setAttribute('aria-expanded','false');
+            setBodyHeight(body, false);
+          }
+        });
+
+        const img = btn.getAttribute('data-image');
+        if(img && visual){
+          visual.src = img;
+          const title = btn.querySelector('h4')?.textContent || 'Feature preview';
+          visual.alt = title;
+        }
+      }
+
+      items.forEach(btn => {
+        btn.addEventListener('click', () => {
+          if(btn.classList.contains('is-open')) return;
+          openItem(btn);
+        });
+      });
+
+      openItem(document.querySelector('.feature-item') || items[0]);
     })();
   </script>
 </html>
